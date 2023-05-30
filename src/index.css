@@ -18,6 +18,11 @@ a {
     text-align: center;
 }
 
+.post {
+    margin: 15px 55px;
+    text-align: start;
+}
+
 .active {
     background-color: azure;
 }

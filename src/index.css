@@ -4,7 +4,7 @@ a {
 }
 
 .side-link {
-    border-bottom: 0.5px solid black;
+    border-bottom: 1px solid black;
     display: block;
     padding-left: 10px;
 }
@@ -21,6 +21,31 @@ a {
 .post {
     margin: 15px 55px;
     text-align: start;
+}
+
+.card-header {
+    width: 100%;
+
+}
+
+.post .postTopic {
+    float: left;
+    height: 5vh;
+    width: 12vw;
+    color: black;
+    background-color: darkseagreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 15%;
+}
+
+
+.post .footer {
+    display: block;
+    text-align: end;
+    color: darkgoldenrod;
+    font-size: small;
 }
 
 .active {

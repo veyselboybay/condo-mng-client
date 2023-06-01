@@ -15,7 +15,7 @@ a {
 }
 
 .posts {
-    text-align: center;
+    /* text-align: center; */
 }
 
 .post {
@@ -50,4 +50,15 @@ a {
 
 .active {
     background-color: azure;
+}
+
+.newPost {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+}
+
+.newPost h3 {
+    text-align: center;
 }

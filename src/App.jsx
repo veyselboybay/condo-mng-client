@@ -10,7 +10,7 @@ import './App.css'
 
 function App() {
   return (
-    <>
+    <div>
       <NavBar />
       <Container>
         <Row>
@@ -30,7 +30,7 @@ function App() {
           </Col>
         </Row>
       </Container>
-    </>
+    </div>
   )
 }
 

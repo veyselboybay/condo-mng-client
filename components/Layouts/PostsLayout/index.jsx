@@ -7,13 +7,13 @@ const PostsLayout = () => {
         <>
             <Nav variant="tabs" defaultActiveKey="/posts">
                 <Nav.Item>
-                    <Nav.Link eventKey="posts"><Link to={'/posts'}>All Posts</Link></Nav.Link>
+                    <Nav.Link eventKey="posts" as={Link} to={'/posts'}>All Posts</Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                    <Nav.Link eventKey="myposts"><Link to={'/posts/2435354'}>My Posts</Link></Nav.Link>
+                    <Nav.Link eventKey="myposts" as={Link} to={'/posts/2435354'}>My Posts</Nav.Link>
                 </Nav.Item>
                 <Nav.Item >
-                    <Nav.Link eventKey="newpost"><Link to={'/posts/2435354/newpost'} style={{ color: 'cadetblue' }}>Create Post</Link></Nav.Link>
+                    <Nav.Link eventKey="newpost" as={Link} to={'/posts/2435354/newpost'} style={{ color: 'cadetblue' }}>Create Post</Nav.Link>
                 </Nav.Item>
             </Nav>
             <Outlet />

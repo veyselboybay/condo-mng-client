@@ -8,15 +8,15 @@ const NewPost = () => {
             <Form>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Post Topic:</Form.Label>
-                    <Form.Control type="text" placeholder="Maintenance" />
+                    <Form.Control type="text" name='topic' placeholder="Maintenance" />
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Post Title:</Form.Label>
-                    <Form.Control type="text" rows={3} placeholder='Elevator Fix' />
+                    <Form.Control type="text" name='title' placeholder='Elevator Fix' />
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Post Description:</Form.Label>
-                    <Form.Control as="textarea" rows={3} placeholder='Dear residents, ...' />
+                    <Form.Control as="textarea" name='description' rows={3} placeholder='Dear residents, ...' />
                 </Form.Group>
                 <Button variant="primary">Submit</Button>
             </Form>

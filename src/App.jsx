@@ -11,19 +11,27 @@ import ParkingLayout from './components/Layouts/ParkingLayout';
 import ResidentPark from './components/ResidentPark';
 import { faHouse, faSquareRss, faSquareParking } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useSelector } from 'react-redux';
+import AuthLayout from './components/Layouts/AuthLayout';
+
 function App() {
+  const { isLoggedIn } = useSelector(state => state.auth);
   return (
     <div>
       <NavBar />
-      <Container>
+      {isLoggedIn === false && <Container>
+        <AuthLayout />
+      </Container>}
+      {isLoggedIn && <Container>
         <Row>
           <Col sm={2} className='sidebar' >
             <NavLink to='/' style={{ display: 'block' }} className='side-link'><FontAwesomeIcon icon={faHouse} /> Home</NavLink>
-            <NavLink to='/posts' className='side-link'><FontAwesomeIcon icon={faSquareRss} /> Posts</NavLink>
+            <NavLink to='/posts' className='side-link' ><FontAwesomeIcon icon={faSquareRss} /> Posts</NavLink>
             <NavLink to='/parking' className='side-link'><FontAwesomeIcon icon={faSquareParking} /> Parking</NavLink>
           </Col>
           <Col className='posts' sm={10} >
             <Routes>
+              <Route path='/auth' element={<AuthLayout />} />
               <Route path='/' element={<Home />} />
               <Route path='/posts' element={<PostsLayout />}>
                 <Route index element={<Posts />} />
@@ -36,10 +44,11 @@ function App() {
                 <Route path='register/resident' element={<ResidentPark />} />
                 <Route path='register/visitor' element={<ResidentPark />} />
               </Route>
+
             </Routes>
           </Col>
         </Row>
-      </Container>
+      </Container>}
     </div>
   )
 }

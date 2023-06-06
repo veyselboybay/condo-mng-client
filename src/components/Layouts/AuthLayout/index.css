@@ -1,0 +1,23 @@
+.auth-layout {
+    background-color: white;
+    width: 25vw;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 40px;
+}
+
+
+.auth {
+    width: 25vw;
+    /* height: 40vh; */
+    margin-right: auto;
+    margin-left: auto;
+    color: black;
+    /* padding: 20px; */
+}
+
+.auth-form {
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+}

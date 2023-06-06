@@ -30,14 +30,13 @@ a {
 
 .post .postTopic {
     float: left;
-    height: 5vh;
+    height: 4vh;
     width: 12vw;
     color: black;
     background-color: darkseagreen;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top-left-radius: 15%;
 }
 
 

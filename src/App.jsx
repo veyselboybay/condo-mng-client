@@ -1,14 +1,14 @@
-import NavBar from '../components/NavBar'
+import NavBar from './components/NavBar'
 import { Container, Nav, Row, Col } from 'react-bootstrap';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import Home from '../components/Home'
-import Posts from '../components/Posts'
-import PostsLayout from '../components/Layouts/PostsLayout'
-import MyPosts from '../components/MyPosts'
-import NewPost from '../components/NewPost'
+import Home from './components/Home'
+import Posts from './components/Posts'
+import PostsLayout from './components/Layouts/PostsLayout'
+import MyPosts from './components/MyPosts'
+import NewPost from './components/NewPost'
 import './App.css'
-import ParkingLayout from '../components/Layouts/ParkingLayout';
-import ResidentPark from '../components/ResidentPark';
+import ParkingLayout from './components/Layouts/ParkingLayout';
+import ResidentPark from './components/ResidentPark';
 
 function App() {
   return (

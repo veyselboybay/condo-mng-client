@@ -1,6 +1,6 @@
 import NavBar from './components/NavBar'
 import { Container, Nav, Row, Col } from 'react-bootstrap';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, Link, NavLink } from 'react-router-dom'
 import Home from './components/Home'
 import Posts from './components/Posts'
 import PostsLayout from './components/Layouts/PostsLayout'
@@ -9,17 +9,18 @@ import NewPost from './components/NewPost'
 import './App.css'
 import ParkingLayout from './components/Layouts/ParkingLayout';
 import ResidentPark from './components/ResidentPark';
-
+import { faHouse, faSquareRss, faSquareParking } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function App() {
   return (
     <div>
       <NavBar />
       <Container>
         <Row>
-          <Col sm={2} >
-            <Link to='/' style={{ display: 'block' }} className='side-link'>Home</Link>
-            <Link to='/posts' className='side-link'>Posts</Link>
-            <Link to='/parking' className='side-link'>Parking</Link>
+          <Col sm={2} className='sidebar' >
+            <NavLink to='/' style={{ display: 'block' }} className='side-link'><FontAwesomeIcon icon={faHouse} /> Home</NavLink>
+            <NavLink to='/posts' className='side-link'><FontAwesomeIcon icon={faSquareRss} /> Posts</NavLink>
+            <NavLink to='/parking' className='side-link'><FontAwesomeIcon icon={faSquareParking} /> Parking</NavLink>
           </Col>
           <Col className='posts' sm={10} >
             <Routes>

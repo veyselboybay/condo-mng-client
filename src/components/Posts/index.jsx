@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap'
 
 const Posts = () => {
     return (
-        <div style={{ maxHeight: '90vh', overflowY: 'auto' }}>
+        <div style={{ maxHeight: '80vh', overflowY: 'auto' }}>
             <Post />
             <Post />
             <Post />

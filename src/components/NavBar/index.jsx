@@ -1,10 +1,11 @@
 import { Container, Nav } from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
+import './index.css'
 
 const NavBar = () => {
     return (
         <Navbar>
-            <Container>
+            <Container className='nav-bar'>
                 <Navbar.Brand href="#home">My Condo Management</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">

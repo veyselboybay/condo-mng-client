@@ -8,7 +8,7 @@ const SignUp = () => {
                 <Form.Label>First Name</Form.Label>
                 <Form.Control type="text" name='fname' />
             </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control type="text" name='lname' />
             </Form.Group>

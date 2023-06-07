@@ -11,23 +11,46 @@ import ParkingLayout from './components/Layouts/ParkingLayout';
 import ResidentPark from './components/ResidentPark';
 import { faHouse, faSquareRss, faSquareParking } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AuthLayout from './components/Layouts/AuthLayout';
-
+import { useEffect } from 'react';
+import { getLocalStorageAuthData } from './features/Auth/authSlice';
+import { faRightFromBracket, faRightToBracket } from '@fortawesome/free-solid-svg-icons';
+import { logoutUser } from './features/Auth/authSlice';
 function App() {
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   const authData = localStorage.getItem('user');
+  //   if (authData !== null) {
+  //     const loadedData = JSON.parse(authData);
+  //     dispatch(getLocalStorageAuthData(loadedData))
+  //   }
+  // }, [dispatch]);
+
+  let localdata = JSON.parse(localStorage.getItem('user'));
+
+  useEffect(() => {
+    localdata = JSON.parse(localStorage.getItem('user'));
+  }, []);
+
+
   const { isLoggedIn } = useSelector(state => state.auth);
+
   return (
     <div>
       <NavBar />
-      {isLoggedIn === false && <Container>
+      {((localdata === null) && isLoggedIn === false) && <Container>
         <AuthLayout />
       </Container>}
-      {isLoggedIn && <Container>
+      {(isLoggedIn || (localdata && localdata.isLoggedIn === true)) && <Container>
         <Row>
           <Col sm={2} className='sidebar' >
             <NavLink to='/' style={{ display: 'block' }} className='side-link'><FontAwesomeIcon icon={faHouse} /> Home</NavLink>
             <NavLink to='/posts' className='side-link' ><FontAwesomeIcon icon={faSquareRss} /> Posts</NavLink>
             <NavLink to='/parking' className='side-link'><FontAwesomeIcon icon={faSquareParking} /> Parking</NavLink>
+            <span style={{ height: '70vh', display: 'block', borderBottom: '1px solid black' }}></span>
+            <button style={{ border: 'none' }} type='button' onClick={() => dispatch(logoutUser())}><FontAwesomeIcon icon={faRightFromBracket} /> Logout</button>
           </Col>
           <Col className='posts' sm={10} >
             <Routes>

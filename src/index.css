@@ -76,3 +76,8 @@ a {
 .newPost h3 {
     text-align: center;
 }
+
+.error {
+    width: inherit;
+    color: red;
+}

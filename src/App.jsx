@@ -19,6 +19,7 @@ import { faRightFromBracket, faRightToBracket } from '@fortawesome/free-solid-sv
 import { logoutUser } from './features/Auth/authSlice';
 function App() {
   const dispatch = useDispatch();
+  const { user } = useSelector(state => state.auth);
 
   // useEffect(() => {
   //   const authData = localStorage.getItem('user');
@@ -49,7 +50,8 @@ function App() {
             <NavLink to='/' style={{ display: 'block' }} className='side-link'><FontAwesomeIcon icon={faHouse} /> Home</NavLink>
             <NavLink to='/posts' className='side-link' ><FontAwesomeIcon icon={faSquareRss} /> Posts</NavLink>
             <NavLink to='/parking' className='side-link'><FontAwesomeIcon icon={faSquareParking} /> Parking</NavLink>
-            <span style={{ height: '70vh', display: 'block', borderBottom: '1px solid black' }}></span>
+            <span style={{ height: '60vh', display: 'block', borderBottom: '1px solid black' }}></span>
+            {user.userGroup && <p style={{ textAlign: 'center', paddingBottom: '3px', marginBottom: 'none', backgroundColor: '#92B4EC', color: 'black', textTransform: 'uppercase', fontWeight: 'bold' }}>{user.userGroup}</p>}
             <button style={{ border: 'none' }} type='button' onClick={() => dispatch(logoutUser())}><FontAwesomeIcon icon={faRightFromBracket} /> Logout</button>
           </Col>
           <Col className='posts' sm={10} >

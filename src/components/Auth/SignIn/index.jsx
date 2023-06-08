@@ -22,8 +22,10 @@ const SignIn = () => {
             {success === false && <div className='error'><p>{msg}</p></div>}
             <div className="d-grid gap-2">
                 <Button variant="primary" size='md' onClick={() => dispatch(login({
-                    "email": email,
-                    "password": password
+                    // "email": email,
+                    // "password": password
+                    email,
+                    password,
                 }))}>Sign In</Button>
             </div>
         </Form>

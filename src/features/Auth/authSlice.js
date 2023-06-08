@@ -12,11 +12,25 @@ const initialState = {
 }
 
 // API URL
-const api_url = 'http://localhost:3000/api/v1/login';
+const api_url = 'http://localhost:3000';
 
+// LOGIN FUNCTION
 export const login = createAsyncThunk('auth/login', async (loginData,thunkAPI) => {
     try {
-        const res = await axios.post(api_url, loginData);
+        const res = await axios.post(api_url+"/api/v1/login", loginData);
+        return res.data;
+        
+    } catch (error) {
+        // console.log(error.response.data);
+        return thunkAPI.rejectWithValue(error.response.data);
+        
+    }
+})
+
+// SIGN UP FUNCTION
+export const signUp = createAsyncThunk('auth/signUp', async (signupData,thunkAPI) => {
+    try {
+        const res = await axios.post(api_url+"/api/v1/signup", signupData);
         return res.data;
         
     } catch (error) {
@@ -44,6 +58,7 @@ const authSlice = createSlice({
         }
     },
     extraReducers: (builder) => {
+        // LOGIN REDUCER
         builder.addCase(login.pending, (state, action) => {
             state.isLoading = true;
         }).addCase(login.fulfilled, (state, action) => {
@@ -58,7 +73,19 @@ const authSlice = createSlice({
             state.isLoading = false;
             state.success = action.payload.success;
             state.msg = action.payload.msg;
+        }).addCase(signUp.pending, (state, action) => {// SIGN UP REDUCER
+            state.isLoading = true;
+        }).addCase(signUp.fulfilled, (state, action) => {
+            state.isLoading = false;
+        }).addCase(signUp.rejected, (state, action) => {
+            state.isLoading = false;
+            state.success = action.payload.success;
+            state.msg = action.payload.msg;
         })
+
+        // SIGN UP REDUCER
+
+        
     }
 });
 

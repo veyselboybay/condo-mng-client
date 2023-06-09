@@ -45,12 +45,14 @@ a {
 .post .postTopic {
     float: left;
     height: 4vh;
-    width: 12vw;
+    /* width: 12vw; */
+    width: auto;
     color: black;
     background-color: darkseagreen;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 3px 5px;
 }
 
 

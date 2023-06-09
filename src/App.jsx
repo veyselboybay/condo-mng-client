@@ -32,7 +32,9 @@ function App() {
   let localdata = JSON.parse(localStorage.getItem('user'));
 
   useEffect(() => {
+    window.addEventListener('beforeunload', () => dispatch(logoutUser()));
     localdata = JSON.parse(localStorage.getItem('user'));
+    return window.removeEventListener('beforeunload', () => dispatch(logoutUser()));
   }, []);
 
 

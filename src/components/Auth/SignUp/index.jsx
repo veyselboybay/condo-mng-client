@@ -3,7 +3,6 @@ import { Form, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { signUp } from '../../../features/Auth/authSlice'
 
-
 const SignUp = () => {
     const { msg, success } = useSelector(state => state.auth);
     const dispatch = useDispatch();
@@ -48,8 +47,9 @@ const SignUp = () => {
             {success === false && <div className='error'><p>{msg}</p></div>}
             <div className="d-grid gap-2">
                 <Button variant="primary" size='md' onClick={() => {
-                    console.log(user);
+
                     dispatch(signUp(user))
+                    window.location.href = '/';
                 }}>Sign Up</Button>
             </div>
         </Form>

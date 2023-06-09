@@ -10,7 +10,7 @@ const ParkingLayout = () => {
                 <Nav.Item>
                     <Nav.Link eventKey="visitor" as={Link} to={'/parking/visitor'}>Visitor Parking</Nav.Link>
                 </Nav.Item>
-                {user.userGroup && user.userGroup === 'management' && <>
+                {user.userGroup && (user.userGroup === 'management' || user.userGroup === 'security') && <>
                     <Nav.Item>
                         <Nav.Link eventKey="parking" as={Link} to={'/parking'}>Resident Parking</Nav.Link>
                     </Nav.Item>

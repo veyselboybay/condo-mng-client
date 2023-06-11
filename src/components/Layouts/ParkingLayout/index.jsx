@@ -15,10 +15,7 @@ const ParkingLayout = () => {
                         <Nav.Link eventKey="parking" as={Link} to={'/parking'}>Resident Parking</Nav.Link>
                     </Nav.Item>
                     <Nav.Item >
-                        <Nav.Link eventKey="register" as={Link} to={'/parking/register/resident'} style={{ color: 'cadetblue' }}>Register Resident Parking</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item >
-                        <Nav.Link eventKey="register-visitor" as={Link} to={'/parking/register/visitor'} style={{ color: 'cadetblue' }}>Register Visitor Parking</Nav.Link>
+                        <Nav.Link eventKey="register" as={Link} to={'/parking/register'} style={{ color: 'cadetblue' }}>Register Parking</Nav.Link>
                     </Nav.Item></>}
             </Nav>
             <Outlet />

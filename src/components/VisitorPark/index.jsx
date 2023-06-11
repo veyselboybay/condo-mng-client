@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Table } from 'react-bootstrap';
 import { getParkings } from '../../features/Parking/parkingSlice';
-const ResidentPark = () => {
+const VisitorPark = () => {
     const { authToken } = useSelector(store => store.auth);
     const { cars, parking } = useSelector(store => store.parking);
     const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const ResidentPark = () => {
             <tbody>
                 {parking && parking.map((park, index) => {
 
-                    if (park.parkingType === 'Tenant') {
+                    if (park.parkingType === 'Visitor') {
                         const car = cars.find(car => car._id === park.cars);
                         count = count + 1;
                         return <tr key={index}>
@@ -45,4 +45,4 @@ const ResidentPark = () => {
 
 }
 
-export default ResidentPark
+export default VisitorPark

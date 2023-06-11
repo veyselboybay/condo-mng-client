@@ -7,7 +7,7 @@ import { getAllPosts } from '../../features/Posts/postSlice'
 
 const MyPosts = () => {
     const { success, msg, allPosts, isLoading } = useSelector(store => store.post);
-    const { authToken } = useSelector(store => store.auth);
+    const { authToken, user } = useSelector(store => store.auth);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -27,7 +27,10 @@ const MyPosts = () => {
             {isLoading && <>
                 <p>Loading ...</p>
             </>}
-            {allPosts && allPosts.map((post, index) => {
+            {/* {allPosts && allPosts.map((post, index) => {
+                return <Post key={index} {...post} />
+            })} */}
+            {allPosts && allPosts.filter(post => post.userGroup === user.userGroup).map((post, index) => {
                 return <Post key={index} {...post} />
             })}
         </div>

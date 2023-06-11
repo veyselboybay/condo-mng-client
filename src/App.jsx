@@ -9,6 +9,8 @@ import NewPost from './components/NewPost'
 import './App.css'
 import ParkingLayout from './components/Layouts/ParkingLayout';
 import ResidentPark from './components/ResidentPark';
+import VisitorPark from './components/VisitorPark';
+import RegisterParking from './components/RegisterParking';
 import { faHouse, faSquareRss, faSquareParking } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useDispatch, useSelector } from 'react-redux';
@@ -67,9 +69,8 @@ function App() {
               </Route>
               <Route path='/parking' element={<ParkingLayout />}>
                 <Route index element={<ResidentPark />} />
-                <Route path='visitor' element={<ResidentPark />} />
-                <Route path='register/resident' element={<ResidentPark />} />
-                <Route path='register/visitor' element={<ResidentPark />} />
+                <Route path='visitor' element={<VisitorPark />} />
+                <Route path='register' element={<RegisterParking />} />
               </Route>
 
             </Routes>

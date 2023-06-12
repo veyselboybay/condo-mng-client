@@ -21,6 +21,16 @@ export const getParkings = createAsyncThunk('parking/getAllParking', async (auth
     }
 })
 
+// CREATE A NEW PARKING RECORD
+export const createParking = createAsyncThunk('parking/createNewRecord', async (payload, thunkAPI) => {
+    try {
+        const res = await axios.post(baseUrl + '/parking/create', payload);
+        return res.data;
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error.response.data);
+    }
+})
+
 const parkingSlice = createSlice({
     name: 'parking',
     initialState,
@@ -38,6 +48,18 @@ const parkingSlice = createSlice({
             state.cars = cars;
             state.parking = parkings;
         }).addCase(getParkings.rejected, (state, action) => {
+            const { success, msg } = action.payload;
+            state.isLoading = false;
+            state.success = success;
+            state.msg = msg;
+        }).addCase(createParking.pending, (state) => {// create new parking record
+            state.isLoading = true;
+        }).addCase(createParking.fulfilled, (state, action) => {
+            const { success, msg } = action.payload;
+            state.isLoading = false;
+            state.success = success;
+            state.msg = msg;
+        }).addCase(createParking.rejected, (state, action) => {
             const { success, msg } = action.payload;
             state.isLoading = false;
             state.success = success;

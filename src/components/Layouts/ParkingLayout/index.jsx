@@ -13,10 +13,11 @@ const ParkingLayout = () => {
                 {user.userGroup && (user.userGroup === 'management' || user.userGroup === 'security') && <>
                     <Nav.Item>
                         <Nav.Link eventKey="parking" as={Link} to={'/parking'}>Resident Parking</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item >
-                        <Nav.Link eventKey="register" as={Link} to={'/parking/register'} style={{ color: 'cadetblue' }}>Register Parking</Nav.Link>
                     </Nav.Item></>}
+
+                <Nav.Item >
+                    <Nav.Link eventKey="register" as={Link} to={'/parking/register'} style={{ color: 'cadetblue' }}>Register Parking</Nav.Link>
+                </Nav.Item>
             </Nav>
             <Outlet />
         </>

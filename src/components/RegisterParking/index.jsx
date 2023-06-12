@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import { Form, Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-
 import { useNavigate } from "react-router-dom";
+import { createParking } from '../../features/Parking/parkingSlice';
 
 
 const RegisterParking = () => {
-    const { user, authToken } = useSelector(store => store.auth);
-    const { success, msg } = useSelector(store => store.post);
+    const { authToken } = useSelector(store => store.auth);
+    const { success, msg } = useSelector(store => store.parking);
     const dispatch = useDispatch();
     const [postData, setPostData] = useState({});
 
@@ -15,6 +15,12 @@ const RegisterParking = () => {
 
     const ChangePostData = (e) => {
         setPostData(prev => {
+            if (e.target.name === 'year') {
+                return {
+                    ...prev,
+                    [e.target.name]: parseInt(e.target.value)
+                }
+            }
             return {
                 ...prev,
                 [e.target.name]: e.target.value
@@ -22,31 +28,48 @@ const RegisterParking = () => {
         })
     }
     return (
-        <div className='newPost'>
+        <div className='newPost' style={{ width: '40vw', height: '80vh', overflowY: 'auto' }}>
             <h3>New Parking</h3>
-            <Form>
+            <Form className='auth-form'>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                    <Form.Label>Post Topic:</Form.Label>
-                    <Form.Control type="text" name='topic' placeholder="Maintenance" onChange={(e) => ChangePostData(e)} />
+                    <Form.Label>Unit No</Form.Label>
+                    <Form.Control type="text" name='unitNo' onChange={(e) => ChangePostData(e)} />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                    <Form.Label>Post Title:</Form.Label>
-                    <Form.Control type="text" name='title' placeholder='Elevator Fix' onChange={(e) => ChangePostData(e)} />
+                    <Form.Label>Parking Type</Form.Label>
+                    <Form.Select name='parkingType' aria-label="Default select example" onChange={(e) => ChangePostData(e)}>
+                        <option>Select One</option>
+                        <option value="Tenant">Resident</option>
+                        <option value="Visitor">Visitor</option>
+                    </Form.Select>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+                    <Form.Label>License Plate</Form.Label>
+                    <Form.Control type="text" name='licensePlate' onChange={(e) => ChangePostData(e)} />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label>Year</Form.Label>
+                    <Form.Control type="text" name='year' onChange={(e) => ChangePostData(e)} />
                 </Form.Group>
                 <Form.Group className="mb-3">
-                    <Form.Label>Post Description:</Form.Label>
-                    <Form.Control as="textarea" name='description' rows={3} placeholder='Dear residents, ...' onChange={(e) => ChangePostData(e)} />
+                    <Form.Label>Model</Form.Label>
+                    <Form.Control type="text" name='model' onChange={(e) => ChangePostData(e)} />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Make</Form.Label>
+                    <Form.Control type="text" name='make' onChange={(e) => ChangePostData(e)} />
                 </Form.Group>
                 {success === false && <div className='error'><p>{msg}</p></div>}
-                <Button variant="primary" onClick={() => {
-                    try {
-                        // dispatch();
-                        navigate('/parking')
-                    } catch (error) {
-                        console.log(error);
-                    }
-                }}
-                >Submit</Button>
+                <div className="d-grid gap-2">
+                    <Button variant="primary" size='md' onClick={() => {
+                        dispatch(createParking({ auth_token: authToken, ...postData }))
+
+                        if (success) {
+                            navigate('/parking');
+                        }
+                    }}>Sign Up</Button>
+                </div>
             </Form>
         </div>
     )
